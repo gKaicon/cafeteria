@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro ***</title>
+    <link rel="shortcut icon" href="../midia/logo-ponto-virgula.png" type="image/x-icon">
+    <link rel="stylesheet" href="">
+</head>
+(33) 98878-9536
+<body>
+    <header>
+        <h1>***</h1>
+    </header>
+
+    <section class="section-cadastro">
+        <fieldset>
+            <legend>Cadastro ***</legend>
+            <form>
+                <input type="hidden" name="id" id="id" class="registro">
+                <div>
+                    <label for="nome">Nome: </label>
+                    <input required type="text" name="nome" id="nome">
+
+                    <label for="cpf">CPF: </label>
+                    <!-- cpnj length = 18 -->
+                    <input required type="text" name="cpf" id="cpf" minlength="14" maxlength="14">
+
+                    <select required name="cargo" id="cargo">
+                        <option value="estagiario">Estagiário</option>
+                        <option value="entregador">Entregador</option>
+                        <option value="caixa">Caixa</option>
+                        <option value="gerente">Gerente</option>
+                        <option value="limpeza">Setor de limpeza</option>
+                    </select>
+
+                    <label for="telefone">Telefone: </label>
+                    <input required type="text" name="telefone" id="telefone" minlength="15" maxlength="15">
+
+                    <label for="email">Email: </label>
+                    <input required type="email" name="email" id="email">
+                </div>
+
+                <div class="buttons">
+                    <button type="button" id="enviar">Enviar</button>
+                    <button type="button" id="salvar">Salvar</button>
+                </div>
+
+            </form>
+        </fieldset>
+    </section>
+
+    <section class="section-registros">
+        <table>
+            <thead>
+                <tr>
+                    <td>Codigo</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody id="corpo-tabela">
+
+            </tbody>
+        </table>
+    </section>
+</body>
+<script src="../js/geral.js"></script>
+
+</html>

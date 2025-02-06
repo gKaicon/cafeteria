@@ -4,7 +4,7 @@ function checkLogin() {
     fetch('include/check.php')
         .then(res => res.json())
         .then(data => {
-            if (precisaLogin == "true") {
+            if (precisaLogin == "true" && data.logado == "false") {
                 window.location.href = "tela-login.html";
             }
             else if (data.logado == "true" && data.tipoUser == 0) {
