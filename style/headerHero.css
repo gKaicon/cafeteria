@@ -1,0 +1,21 @@
+/*Hero header*/
+.header {
+    background-color: #d2b48c;
+    color: #a0522d;
+    text-align: center;
+    padding-top: 30px;
+  }
+  
+  .hero {
+    background-color: #d2b48c;
+    padding-bottom: 30px;
+  }
+  
+  .hero img {
+    height: 220px;
+    width: 400px;
+  }
+  
+  .hero h3 {
+    margin-top: 10px;
+  }

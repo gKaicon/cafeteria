@@ -1,0 +1,65 @@
+
+/*FOOTER*/
+
+.icon-footer {
+    height: 25px;
+    width: auto;
+  }
+  
+  .address {
+    content: url("../midia/icons/officebuilding-svgrepo-com.svg");
+  }
+  
+  .whatsapp {
+    content: url("../midia/icons/whatsapp-svgrepo-com.svg");
+  }
+  
+  .web {
+    content: url("../midia/icons/globe-svgrepo-com.svg");
+  }
+  
+  .ul-footer {
+    font-size: 24px;
+    list-style: none;
+  }
+  
+  .ul-footer a {
+    text-decoration: none;
+  }
+  
+  .ul-footer a:hover {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+  }
+  
+  footer {
+    background-color: #8b4513;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 5px;
+  }
+  
+  .center-footer img {
+    height: 100px;
+    padding: 0px 10px;
+  }
+  
+  .center-footer .center {
+    height: 50px;
+  }
+  
+  .footer-info {
+    padding-top: 0;
+    margin-top: 0px;
+  }
+  
+  .footer-info a {
+    color: rgb(211, 194, 179);
+  }
+  
+  .footer {
+    background-color: rgb(145, 89, 43);
+    color: #ffffff;
+    padding: 40px !important;
+    text-align: center;
+  }

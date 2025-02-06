@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/cardapio.css">
+    <link rel="stylesheet" href="../style/geral.css">
+    <link rel="stylesheet" href="../style/footer.css">
+    <link rel="stylesheet" href="../style/navBar.css">
+    <link rel="stylesheet" href="../style/cafeEdit.css">
+    <title>Cardápio</title>
+
+</head>
+
+<body>
+    <script src="../js/check.js"></script>
+    <script src="../js/cardapio.js"></script>
+    <nav>
+        <ul>
+            <li class="right">
+                <a class="nohover" href="/">
+                    <img src="../midia/coffee-svgrepo-com.svg" alt="logo" class="nav-logo">
+                </a>
+            </li>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="../pages/cardapio.html">Cardápio</a></li>
+            <li class="left">
+                <a href="#">Administrativo</a>
+                <ul class="submenu">
+                    <li class="btn-adm" id="btn-adm"><a href="../pages/central.html">Central</a></li>
+                    <li class="btn-login" id="btn-login"><a href="../pages/tela-login.html">Login</a></li>
+                    <li class="btn-logout" id="btn-logout"><a onclick="logout()" href="../pages/">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-cardapio">
+        <table>
+            <tbody id="tBody">
+            </tbody ody>
+        </table>
+    </div>
+    <div class="quebra-pag"></div>
+    <div class="footer inferior">
+        <div class="row justify-content-center footer-info">
+            <div class="col-4 align-content-center">
+                <h3>
+                    Cafeteria Ponto e Virgula
+                </h3>
+            </div>
+            <div class="col-3 align-content-center center-footer">
+                <img src="../midia/icons/coffee.svg">
+                <img class="center" src="../midia/icons/arrow-double-right.svg">
+                <img src="../midia/icons/java-coffee.svg">
+            </div>
+            <div class="col-4 align-content-center">
+                <ul class="ul-footer">
+                    <li><a href="#"><span class="icon-footer address"></span> Rua dos Códigos - São João Evagelista</a>
+                    </li>
+                    <li><a href="#"><span class="icon-footer whatsapp"></span> (33) 98874-7070</a></li>
+                    <li><a href="#"></a><span class="icon-footer web"></span><a href="/Aula 07-10/pages/index.html">
+                            www.cafeteria.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="d-flex justify-content-center ">
+            <p>Copyright 2025 - Direitos reservados - Gabriel Kaicon Batista Hilário</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

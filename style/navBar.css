@@ -1,0 +1,87 @@
+/*Nav bar*/
+nav {
+  background-color: #a0522d;
+  width: 100%;
+  padding: 10px;
+  overflow: hidden;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 15px;
+  position: relative;
+}
+
+nav ul li a {
+  display: block;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #a0522d;
+  background-color: #ad8c60;
+  border-radius: 16px;
+  transition: color 0.3s;
+}
+
+.submenu {
+  display: none;
+  width: 145px;
+  position: fixed;
+  z-index: 999999 !important;
+  background-color: #a0522d;
+  border-radius: 16px;
+  color: #ffffff;
+}
+
+.submenu li {
+  display: block;
+}
+
+.submenu a {
+  padding: 10px;
+  white-space: nowrap; /* Evita que o texto do link quebre */
+}
+
+nav li:hover .submenu {
+  display: block;
+}
+
+.nav-logo {
+  height: 50px;
+  margin-left: 5%;
+}
+
+.btn {
+  background-color: #a0522d;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  background-color: #8b4513;
+}
+
+.nohover:hover{
+  background-color: transparent !important;
+}

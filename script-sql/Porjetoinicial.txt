@@ -1,0 +1,52 @@
+Projeto inicial:
+
+Funcionario(cadastro + listagem)
+
+Regristro = integer pk
+nome
+cargo
+cpf
+telefone
+email
+
+Fornecedores(cadastro + listagem)
+id
+razao social
+cnpj
+logradouro
+num
+bairro
+cidade
+complemento
+UF
+cep
+codigoMunicipio
+complemento
+
+Produto(cadastro + listagem)
+id
+descr
+precoCusto
+nomeImg
+
+
+Compra(Fazer pedido, adicionar produtos ao pedido)
+idCompra
+funcionario
+fornecedor
+dtCompra
+valorFinal
+
+itensCompra
+id
+idCompra
+idProduto
+qtd
+valorUnitario
+valorTotal
+
+Cadastro de Gastos, listagem por mês e gerar o relatório(Janelinha, mostrando gastos totais no mês)
+id
+descr
+dt_gasto(data em que o gasto foi feito)
+valor_gasto
