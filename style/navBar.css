@@ -1,9 +1,15 @@
 /*Nav bar*/
+
+html {
+  scroll-behavior: smooth;
+}
+
 nav {
   background-color: #a0522d;
   width: 100%;
   padding: 10px;
   overflow: hidden;
+  z-index: 999999 !important;
 }
 
 nav ul {
@@ -17,7 +23,6 @@ nav ul {
 }
 
 nav ul li {
-  display: inline-block;
   margin: 0 15px;
   position: relative;
 }
@@ -33,7 +38,7 @@ nav ul li a {
   transition: color 0.3s;
 }
 
-nav ul li a:hover {
+nav ul li a:hover:not(.nohover) {
   color: #a0522d;
   background-color: #ad8c60;
   border-radius: 16px;
@@ -48,10 +53,6 @@ nav ul li a:hover {
   background-color: #a0522d;
   border-radius: 16px;
   color: #ffffff;
-}
-
-.submenu li {
-  display: block;
 }
 
 .submenu a {
@@ -82,6 +83,6 @@ nav li:hover .submenu {
   background-color: #8b4513;
 }
 
-.nohover:hover{
+.nohover:hover {
   background-color: transparent !important;
 }

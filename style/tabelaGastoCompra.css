@@ -1,0 +1,134 @@
+.relatorio-ultimo-mes {
+  margin: 40px 100px;
+}
+
+details summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+details summary .text-summary {
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 25px;
+}
+
+details summary img {
+  transition: transform 0.3s ease;
+}
+
+details[open] summary img {
+  transform: rotate(180deg);
+}
+
+details {
+  border: none;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+details > summary {
+  padding: 10px 10px 0 10px;
+}
+
+details > div {
+  padding: 0 10px 10px 10px;
+}
+
+table {
+  width: 100%;
+  margin-top: 10px;
+  border: 2px solid #8b4513;
+  border-radius: 16px !important;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #a0522d;
+}
+
+td:not(tfoot td) {
+  text-align: center !important;
+}
+
+tfoot tr td:last-child {
+  padding: 8px 40px 8px 8px !important;
+  text-align: right;
+}
+
+tfoot tr td:first-child {
+  padding: 8px 8px 8px 40px !important;
+}
+
+th {
+  background-color: #a0522d;
+  color: white;
+}
+
+tfoot {
+  font-weight: bold;
+}
+
+tfoot td {
+  border: none !important;
+}
+
+fieldset {
+  border: 2px solid #a0522d;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #f8f4f0;
+}
+
+legend {
+  color: #a0522d;
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+label,
+input,
+option {
+  text-align: start !important;
+  display: block;
+  margin-bottom: 5px;
+  color: #704214;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #a0522d;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.buttons {
+  text-align: left !important;
+}
+
+button {
+  background-color: #a0522d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+td button {
+  padding: 1.5% !important;
+  border-radius: 8px !important;
+}
+
+button:hover {
+  background-color: #8b4513;
+}
