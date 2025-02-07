@@ -11,26 +11,31 @@
     <link rel="stylesheet" href="../style/navBar.css">
     <link rel="stylesheet" href="../style/vantagens.css">
     <link rel="stylesheet" href="../style/cafeEdit.css">
-    <link rel="stylesheet" href="../style/">
+    <link rel="stylesheet" href="../style/cardapio.css">
     <title>Cafeteria Ponto e vírgula</title>
 </head>
+
 <script src="../js/check.js"></script>
+<script src="../js/cardapio.js"></script>
 
 <body>
     <nav>
         <ul>
             <li class="right">
-                <a href="/">
+                <a class="nohover" href="/pages/central.html">
                     <img src="../midia/coffee-svgrepo-com.svg" alt="logo" class="nav-logo">
                 </a>
             </li>
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="../pages/cardapio.html">Cardápio</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#cardapio">Nossos Produtos</a></li>
+            <li><a href="#vantagens">Vantagens</a></li>
             <li class="left">
                 <a href="#">Administrativo</a>
                 <ul class="submenu">
                     <li class="btn-adm" id="btn-adm"><a href="../pages/central.html">Central</a></li>
-                    <li class="btn-login" id="btn-login"><a href="../pages/tela-login.html">Login</a></li>
+                    <li class="btn-login" id="btn-login" style="display: none;"><a
+                            href="../pages/tela-login.html">Login</a></li>
                     <li class="btn-logout" id="btn-logout"><a onclick="logout()" href="../pages/">Logout</a></li>
                 </ul>
             </li>
@@ -49,14 +54,7 @@
     </header>
 
     <main style="margin-top: 20%px;">
-        <section class="hero row justify-content-center">
-
-            <div class="col-6 align-content-center">
-
-            </div>
-        </section>
-
-        <section class="container">
+        <section class="container" id="sobre">
             <section class="content row">
                 <div class="col-5 cafe">
                     <div class="container-cafe">
@@ -114,7 +112,7 @@
                     </p>
                 </div>
             </section>
-            <section style="margin: 100px 0 0 0;">
+            <section style="margin: 65px 0 0 0;">
                 <h3>Um espaço para ideias e inovações</h3>
                 <p>
                     Aqui, o café é tão importante quanto o código. A cada xícara, acreditamos que novas ideias podem
@@ -135,7 +133,20 @@
             </section>
         </section>
 
-        <section class="vantagens">
+        <section class="cardapio" id="cardapio">
+            <div class="w-100">
+                <h1 class="w-100">Conheça nossos produtos!</h1>
+            </div>
+            <hr style="border: 1px solid #a0522d; margin: 10px 60px;">
+            <div class="container-cardapio">
+                <table>
+                    <tbody id="tBody">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="vantagens" id="vantagens">
             <fieldset>
                 <legend>
                     <h2>Vantagens de fazer parte da nossa comunidade</h2>
@@ -261,7 +272,7 @@
     </div>
     <footer>
         <div class="d-flex justify-content-center ">
-            <p>Copyright 2025 - Direitos reservados - Gabriel Kaicon Batista Hilário</p>
+            <p>Copyright &copy 2025 - Direitos reservados - Gabriel Kaicon Batista Hilário</p>
         </div>
     </footer>
 </body>

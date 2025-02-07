@@ -1,34 +1,89 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../midia/logo-ponto-virgula.png" type="image/x-icon">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../style/geral.css">
+    <link rel="stylesheet" href="../style/navBar.css">
+    <link rel="stylesheet" href="../style/vantagens.css">
+    <link rel="stylesheet" href="../style/tabelaGastoCompra.css">
     <title>Central Administrativa</title>
     <script src="../js/check.js" data-precisalogin="true"></script>
 </head>
+
 <body>
     <nav>
         <ul>
             <li class="right">
-                <a href="/">
-                    <img src="../midia/coffee-svgrepo-com.svg" alt="logo" class="nav-logo">
+                <a class="nohover" href="/pages/central.html">
+                    <img src="../midia/logo-ponto-virgula.png" alt="logo" class="nav-logo">
                 </a>
             </li>
             <li><a href="./index.html">Home</a></li>
-            <li><a href="../pages/cardapio.html">Cardápio</a></li>
-            <li class="left">
-                <a href="#">Administrativo</a>
-                <ul class="submenu">
-                    <li class="btn-adm" id="btn-adm"><a href="../pages/central.html">Central</a></li>
-                    <li class="btn-login" id="btn-login"><a href="../pages/tela-login.html">Login</a></li>
-                    <li class="btn-logout" id="btn-logout"><a onclick="logout()" href="../pages/">Logout</a></li>
-                </ul>
-            </li>
+            <li><a href="./visaoCompra.html">Aquisição de Produtos</a></li>
+            <li><a href="./visaoFornecedor.html">Fornecedor</a></li>
+            <li><a href="./visaoFuncionario.html">Funcionario</a></li>
+            <li><a href="./visaoProduto.html">Produto</a></li>
+            <li class="btn-adm" id="btn-adm"><a href="../pages/central.html">Central</a></li>
+            <li class="left btn-logout" id="btn-logout"><a onclick="logout()" href="../pages/">Logout</a></li>
         </ul>
     </nav>
 
-     <script src=""></script>
+    <main>
+        <section class="relatorio-ultimo-mes">
+            <div style="display: flex; justify-content: space-between; border: 1px solid #8b4513; border-radius: 8px;">
+                <h2 style="margin-left: 10px;">Gastos Totais</h2>
+                <span style="margin-right: 10px; margin-top: 5px;" class="gasto-total"></span>
+            </div>
+            <div>
+                <details>
+                    <summary><span class="text-summary">Compras</span><img src="../midia/icons/arrow-down.svg"
+                            style="padding-top: 6px" height="22px">
+                    </summary>
+                    <div id="compras-ultimo-mes">
+
+                    </div>
+
+                </details>
+            </div>
+            <div>
+                <details>
+                    <summary><span class="text-summary">Gastos</span><img src="../midia/icons/arrow-down.svg"
+                            style="padding-top: 6px" height="22px">
+                    </summary>
+                    <div id="gastos-ultimo-mes">
+
+                    </div>
+                </details>
+                <fieldset>
+                    <legend>Cadastro Gastos</legend>
+                    <form>
+                        <input type="hidden" required id="id" name="id">
+                        <label for="descr">Descrição do Gasto</label>
+                        <input type="text" required id="descr" name="descr" placeholder="Digite o motivo" class="">
+                        <label for="dt_gasto">Data do Gasto</label>
+                        <input type="date" required id="dt_gasto" name="dt_gasto" class="">
+                        <label for="valor_gasto">Valor</label>
+                        <div class="input-box">
+                            <span class="symbol">R$</span>
+                            <input type="text" required id="valor_gasto" name="valor_gasto" placeholder="XXXXXX.XX"
+                                class="decimal10-2" maxlength="13">
+                        </div>
+                        <div class="buttons">
+                            <button id="enviar">Enviar</button>
+                            <button id="salvar">Salvar</button>
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="../js/central.js"></script>
+    <script src="../js/geral.js"></script>
 </body>
+
 </html>
