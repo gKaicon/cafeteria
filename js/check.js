@@ -9,25 +9,23 @@ function checkLogin() {
             }
             else if (data.logado == "true" && data.tipoUser == 0) {
                 document.querySelector('#btn-login').style.display = 'none'
-                document.querySelector('#btn-adm').style.display = 'block'
-                document.querySelector('#btn-logout').style.display = 'block'
-                return true;
+                document.querySelector('#btn-adm').style.display = 'inline-block'
+                document.querySelector('#btn-logout').style.display = 'inline-block'
             }
             else if (data.logado == "false" && data.tipoUser == 1) {
-                document.querySelector('#btn-login').style.display = 'block'
+                document.querySelector('#btn-login').style.display = 'inline-block'
                 document.querySelector('#btn-adm').style.display = 'none'
                 document.querySelector('#btn-logout').style.display = 'none'
-                return false;
-            }            
+            }
         })
 }
 
 checkLogin()
 
 function logout() {
-    fetch('include/logout.php')
+    fetch('include/UserLogin/Controlador.php?acao=logout')
         .then(res => res.json())
         .then(data => {
-            window.location.reload();            
+            window.location.href = "../index.html";
         })
 }

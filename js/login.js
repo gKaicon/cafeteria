@@ -4,7 +4,7 @@ document.querySelector('#login-form').addEventListener('submit', () => {
         entrada: document.getElementById('entrada').value,
         password: document.getElementById('password').value,
     }
-    fetch('include/UserLogin/Controlador.php', {
+    fetch('include/UserLogin/Controlador.php?acao=login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

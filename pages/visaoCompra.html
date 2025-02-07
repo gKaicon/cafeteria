@@ -4,50 +4,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
     <title>Cadastro ***</title>
-<script src="../js/geral.js"></script>
-<link rel="shortcut icon" href="../midia/logo-ponto-virgula.png" type="image/x-icon">
-    <link rel="stylesheet" href="">
+    <link rel="shortcut icon" href="../midia/logo-ponto-virgula.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style/geral.css">
+    <link rel="stylesheet" href="../style/navBar.css">
+    <link rel="stylesheet" href="../style/visual.css">
+    <link rel="stylesheet" href="../style/footer.css">
+    <script src="../js/check.js" data-precisalogin="true"></script>
 </head>
+
 <body>
+    <nav>
+        <ul>
+            <li class="right">
+                <a class="nohover" href="/pages/central.html">
+                    <img src="../midia/logo-ponto-virgula.png" alt="logo" class="nav-logo">
+                </a>
+            </li>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./visaoCompra.html">Aquisição de Produtos</a></li>
+            <li><a href="./visaoFornecedor.html">Fornecedor</a></li>
+            <li><a href="./visaoFuncionario.html">Funcionario</a></li>
+            <li><a href="./visaoProduto.html">Produto</a></li>
+            <li class="btn-adm" id="btn-adm"><a href="../pages/central.html">Central</a></li>
+            <li class="left btn-logout" id="btn-logout"><a onclick="logout()" href="../pages/">Logout</a></li>
+        </ul>
+    </nav>
     <header>
         <h1>***</h1>
     </header>
+    <main>
+        <section class="section-cadastro">
+            <fieldset>
+                <legend>Cadastro ***</legend>
+                <form>
+                    <input type="hidden" name="id" id="id" class="">
+                    <div>
+                        <label for="">: </label>
+                        <input required type="text" name="" id="">
 
-    <section class="section-cadastro">
-        <fieldset>
-            <legend>Cadastro ***</legend>
-            <form>
-                <input type="hidden" name="" id="">
-                <div>
-                    <label for="">: </label>
-                    <input type="text" name="" id="">
+                        <label for="cpf">CPF: </label>
+                        <!-- cpnj length = 18 -->
+                        <input required type="text" name="cpf" id="cpf" minlength="14" maxlength="14">
+
+                        
+                    </div>
+
+                    <div class="buttons">
+                        <button type="button" id="enviar">Enviar</button>
+                        <button type="button" id="salvar">Salvar</button>
+                    </div>
+                </form>
+            </fieldset>
+        </section>
+
+        <section class="section-registros">
+            <fieldset>
+                <legend>Listagem ***</legend>
+                <div id="table-list">
+
                 </div>
-                
-                <div class="buttons">
-                    <button type="button" id="enviar">Enviar</button>
-                    <button type="button" id="salvar">Salvar</button>
-                </div>
+            </fieldset>
+        </section>
+    </main>
 
-            </form>
-        </fieldset>
-    </section>
+    <div class="quebra-pag"></div>
 
-    <section class="section-registros">
-        <table>
-            <thead>
-                <tr>
-                    <td>Codigo</td>
-                    <td></td>
-                </tr>
-            </thead>
-            <tbody id="corpo-tabela">
-
-            </tbody>
-        </table>
-    </section>
+    <footer>
+        <div class="d-flex justify-content-center ">
+            <p>Copyright &copy 2025 - Direitos reservados - Gabriel Kaicon Batista Hilário</p>
+        </div>
+    </footer>
 </body>
+<script src="../js/geral.js"></script>
+<script src="../js/visual***.js"></script>
 
 </html>

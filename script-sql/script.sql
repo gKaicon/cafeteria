@@ -44,7 +44,8 @@ CREATE TABLE Fornecedores
     complemento     VARCHAR(255),
     UF              VARCHAR(2),
     cep             VARCHAR(9),
-    codigoMunicipio VARCHAR(7) -- Código do IBGE
+    codigoMunicipio VARCHAR(7),
+    dt_delete date
 );
 
 
@@ -162,3 +163,8 @@ INSERT INTO Compras (idfuncionario, idfornecedor, dtCompra, valorFinal)
 VALUES (1, 1, '2025-01-16', 250.00);
 INSERT INTO Compras (idfuncionario, idfornecedor, dtCompra, valorFinal)
 VALUES (1, 1, '2025-01-31', 150.00);
+
+use trabalho;
+select * from produtos;
+
+select * from fornecedores;

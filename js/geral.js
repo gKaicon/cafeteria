@@ -52,3 +52,51 @@ if (document.getElementById('cep')) {
         document.getElementById('cep').value = mascaraCEP(document.getElementById('cep').value);
     });
 }
+
+if (document.querySelector('.decimal10-2')) {
+    const input = document.querySelector('.decimal10-2');
+    input.addEventListener('input', () => {
+        function mascaraValor(valor) {
+            valor = valor.replace(/\D/g, '');
+
+            if (valor.length <= 2) {
+                return valor;
+            } else {
+                const parteInteira = valor.slice(0, -2);
+                const parteDecimal = valor.slice(-2);
+                return parteInteira + '.' + parteDecimal;
+            }
+        }
+        input.value = mascaraValor(input.value);
+    })
+}
+
+if(document.getElementById('fornecedor')){
+    let comboFornecedor = document.getElementById('fornecedor')
+    fetch('include/Fornecedor/Controlador.php?acao=listarCombo')
+    .then(response => response.text())
+    .then(data => {
+      let dados = JSON.parse(data)
+      comboFornecedor.innerHTML = dados.html
+    })
+}
+
+if(document.getElementById('produto')){
+    let comboFornecedor = document.getElementById('produto')
+    fetch('include/Produto/Controlador.php?acao=listarCombo')
+    .then(response => response.text())
+    .then(data => {
+      let dados = JSON.parse(data)
+      comboFornecedor.innerHTML = dados.html
+    })
+}
+
+if(document.getElementById('funcionario')){
+    let comboFornecedor = document.getElementById('funcionario')
+    fetch('include/Funcionario/Controlador.php?acao=listarCombo')
+    .then(response => response.text())
+    .then(data => {
+      let dados = JSON.parse(data)
+      comboFornecedor.innerHTML = dados.html
+    })
+}
