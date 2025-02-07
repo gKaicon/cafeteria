@@ -12,10 +12,16 @@
   padding: 0;
   box-sizing: border-box;
   position: absolute;
-  margin: 3% 0 0 -5%;
+  margin: 3% 0 0 -8%;
   width: 600px;
   height: 70%;
   border-radius: 50%;
+  background-image: url("../midia/dark-brown-wood-table.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: #72553b;
+  z-index: -1;
 }
 
 .side-cafe {
@@ -25,15 +31,16 @@
 .container-cafe {
   display: inline-block;
   position: relative;
-  top: 30px;
+  top: 5px;
 }
 .copo {
   position: relative;
   width: 280px;
   height: 250px;
-  background: linear-gradient(to right, #000000, #000000);
+  background: linear-gradient(to right, #ffffff, #d8c8c8);
   border-bottom-left-radius: 45%;
   border-bottom-right-radius: 45%;
+  z-index: 1;
 }
 .topo {
   position: absolute;
@@ -41,7 +48,7 @@
   left: 0;
   width: 100%;
   height: 60px;
-  background: linear-gradient(to right, #000000, #000000);
+  background: linear-gradient(to right, #ffffff, #c9c4c4);
   border-radius: 50%;
 }
 .circulo {
@@ -50,7 +57,7 @@
   left: 10px;
   width: calc(100% - 20px);
   height: 50px;
-  background: linear-gradient(to left, #000000, #acb2dd);
+  background: linear-gradient(to left, #885e37, #422807);
   border-radius: 50%;
   box-sizing: border-box;
   overflow: hidden;
@@ -58,12 +65,12 @@
 
 .pegador {
   position: absolute;
-  top: 10px;
+  top: 1px;
   right: -60px;
   width: 150px;
   height: 170px;
   left: 150px;
-  border: 25px solid #000000;
+  border: 25px solid #e4dddd;
   border-left: 25px solid transparent;
   border-bottom: 25px solid transparent;
   border-radius: 50%;
@@ -76,7 +83,7 @@
   transform: translateX(-50%);
   width: 500px;
   height: 200px;
-  background: linear-gradient(to right, #a49fd1, #cccce4);
+  background: linear-gradient(to right, #898994, #a2a2d6);
   border-radius: 50%;
   box-shadow: 0 35px 35px rgba(0, 0, 0, 0.2);
 }
@@ -88,7 +95,7 @@
   right: 10px;
   bottom: 10px;
   border-radius: 50%;
-  background: linear-gradient(to right, #babae9, #827b9e);
+  background: linear-gradient(to right, #a9a9bb, #827b9e);
 }
 .prato::after {
   content: "";

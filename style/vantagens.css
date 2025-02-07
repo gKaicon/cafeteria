@@ -5,6 +5,10 @@
   font-size: 26px;
 }
 
+fieldset{
+  margin: 20px 0;
+}
+
 .vantagens h2 {
   font-size: 28px;
 }
@@ -36,7 +40,7 @@
 .vantagens fieldset div div summary {
   display: flex;
   justify-content: space-between;
-  margin-left: -6%;
+  margin-left: -4%;
 }
 
 .vantagens fieldset legend {
