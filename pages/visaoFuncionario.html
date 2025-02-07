@@ -4,67 +4,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro ***</title>
+    <title>Cadastro Funcionario</title>
     <link rel="shortcut icon" href="../midia/logo-ponto-virgula.png" type="image/x-icon">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../style/geral.css">
+    <link rel="stylesheet" href="../style/navBar.css">
+    <link rel="stylesheet" href="../style/visual.css">
+    <link rel="stylesheet" href="../style/footer.css">
+    <script src="../js/check.js" data-precisalogin="true"></script>
 </head>
-(33) 98878-9536
+
 <body>
+    <nav>
+        <ul>
+            <li class="right">
+                <a class="nohover" href="/pages/central.html">
+                    <img src="../midia/logo-ponto-virgula.png" alt="logo" class="nav-logo">
+                </a>
+            </li>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./visaoCompra.html">Aquisição de Produtos</a></li>
+            <li><a href="./visaoFornecedor.html">Fornecedor</a></li>
+            <li><a href="./visaoFuncionario.html">Funcionario</a></li>
+            <li><a href="./visaoProduto.html">Produto</a></li>
+            <li class="btn-adm" id="btn-adm"><a href="../pages/central.html">Central</a></li>
+            <li class="left btn-logout" id="btn-logout"><a onclick="logout()" href="../pages/">Logout</a></li>
+        </ul>
+    </nav>
     <header>
-        <h1>***</h1>
+        <h1>Funcionario</h1>
     </header>
+    <main>
+        <section class="section-cadastro">
+            <fieldset>
+                <legend>Cadastro Funcionario</legend>
+                <form>
+                    <input type="hidden" name="id" id="id" class="registro">
+                    <div>
+                        <label for="nome">Nome: </label>
+                        <input required type="text" name="nome" id="nome">
 
-    <section class="section-cadastro">
-        <fieldset>
-            <legend>Cadastro ***</legend>
-            <form>
-                <input type="hidden" name="id" id="id" class="registro">
-                <div>
-                    <label for="nome">Nome: </label>
-                    <input required type="text" name="nome" id="nome">
+                        <label for="cpf">CPF: </label>
+                        <input required type="text" name="cpf" id="cpf" minlength="14" maxlength="14">
 
-                    <label for="cpf">CPF: </label>
-                    <!-- cpnj length = 18 -->
-                    <input required type="text" name="cpf" id="cpf" minlength="14" maxlength="14">
+                        <label for="cargo">Cargo: </label>
+                        <select required name="cargo" id="cargo">
+                            <option value="estagiario">Estagiário</option>
+                            <option value="entregador">Entregador</option>
+                            <option value="caixa">Caixa</option>
+                            <option value="gerente">Gerente</option>
+                            <option value="limpeza">Setor de limpeza</option>
+                        </select>
 
-                    <select required name="cargo" id="cargo">
-                        <option value="estagiario">Estagiário</option>
-                        <option value="entregador">Entregador</option>
-                        <option value="caixa">Caixa</option>
-                        <option value="gerente">Gerente</option>
-                        <option value="limpeza">Setor de limpeza</option>
-                    </select>
+                        <label for="telefone">Telefone: </label>
+                        <input required type="text" name="telefone" id="telefone" minlength="15" maxlength="15">
 
-                    <label for="telefone">Telefone: </label>
-                    <input required type="text" name="telefone" id="telefone" minlength="15" maxlength="15">
+                        <label for="email">Email: </label>
+                        <input required type="email" name="email" id="email">
+                    </div>
 
-                    <label for="email">Email: </label>
-                    <input required type="email" name="email" id="email">
+                    <div class="buttons">
+                        <button type="button" id="enviar">Enviar</button>
+                        <button type="button" id="salvar">Salvar</button>
+                    </div>
+                </form>
+            </fieldset>
+        </section>
+
+        <section class="section-registros">
+            <fieldset>
+                <legend>Listagem Funcionario</legend>
+                <div id="table-list">
+
                 </div>
+            </fieldset>
+        </section>
+    </main>
 
-                <div class="buttons">
-                    <button type="button" id="enviar">Enviar</button>
-                    <button type="button" id="salvar">Salvar</button>
-                </div>
+    <div class="quebra-pag"></div>
 
-            </form>
-        </fieldset>
-    </section>
-
-    <section class="section-registros">
-        <table>
-            <thead>
-                <tr>
-                    <td>Codigo</td>
-                    <td></td>
-                </tr>
-            </thead>
-            <tbody id="corpo-tabela">
-
-            </tbody>
-        </table>
-    </section>
+    <footer>
+        <div class="d-flex justify-content-center ">
+            <p>Copyright &copy 2025 - Direitos reservados - Gabriel Kaicon Batista Hilário</p>
+        </div>
+    </footer>
 </body>
 <script src="../js/geral.js"></script>
+<script src="../js/visualFuncionario.js"></script>
 
 </html>
