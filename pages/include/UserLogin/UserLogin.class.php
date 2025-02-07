@@ -82,7 +82,6 @@ class UserLogin
         }
     }
 
-
     private function verificaUsuarioExiste(UserLogin $u)
     {
         try {
@@ -98,7 +97,6 @@ class UserLogin
             throw new Exception($e->getMessage());
         }
     }
-
 
     public function logar(UserLogin $u)
     {
@@ -116,7 +114,5 @@ class UserLogin
             throw new Exception($e->getMessage());
         }
     }
-
-
 }
 ?>
