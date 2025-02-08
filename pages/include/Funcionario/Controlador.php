@@ -93,7 +93,7 @@ if ($_REQUEST['acao'] === 'listarCombo') {
     if ($result) {
         $html = "";
         foreach ($result as $value) {
-            $html .= "<option value='" . $value['id'] . "'>" . $value['nome'] . "</option>";
+            $html .= "<option value='" . $value['registro'] . "'>" . $value['nome'] . "</option>";
         }
     }
     echo json_encode(['html' => $html]);

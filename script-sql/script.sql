@@ -147,6 +147,12 @@ update produtos
 set listavel = '1'
 where produtos.precoVenda < 1000;
 
+update produtos
+set precoCusto = precoVenda / 1.25
+where produtos.precoVenda < 15555555;
+
+select * from produtos
+
 INSERT INTO Compras (idfuncionario, idfornecedor, dtCompra, valorFinal)
 VALUES (1, 1, '2024-10-27', 150.00);
 INSERT INTO ItensCompra (idCompra, idProduto, qtd, valorUnitario, valorTotal)
@@ -168,3 +174,14 @@ use trabalho;
 select * from produtos;
 
 select * from fornecedores;
+select *
+from itenscompra;
+select * from compras;
+
+
+select * from itenscompra
+
+SELECT Compras.*, F.razao_social as fornecedor, F2.nome as funcionario
+            FROM Compras
+            LEFT JOIN Fornecedores F on Compras.idfornecedor = F.id
+            LEFT JOIN Funcionarios F2 on F2.registro = Compras.idfuncionario;
