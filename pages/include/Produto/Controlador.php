@@ -45,7 +45,7 @@ if ($_REQUEST['acao'] === 'inserir') {
 
     $nomeArquivo = null;
     if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-        $nomeArquivo = $_FILES['imagem']['name'];
+        $nomeArquivo = $_FILES['imagem']['name'] . '-' . time();
         $caminhoArquivo = $diretorioDestino . $nomeArquivo;
 
         if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoArquivo)) {
@@ -57,7 +57,6 @@ if ($_REQUEST['acao'] === 'inserir') {
     }
     $message = 'Sem arquivo';
     $dados = json_decode($_POST['dados'], true);
-
     $p = new Produto();
     $p->setNome($dados['nome']);
     $p->setDescr($dados['descr']);
@@ -67,30 +66,37 @@ if ($_REQUEST['acao'] === 'inserir') {
     $p->setNomeImg($nomeArquivo);
     $p->setFornecedor($dados['fornecedor'] == "" ? null : $dados['fornecedor']);
     $resposta = $p->inserir($p);
+
     echo json_encode(['result' => $resposta, 'nome_arquivo' => $nomeArquivo, 'message' => $message]);
 }
 
 
 if ($_REQUEST['acao'] == 'update') {
+    $dados = json_decode($_POST['dados'], true);
 
     $diretorioDestino = '../../../midia/cardapio/';
 
-    $nomeArquivo = null;
-    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-        $nomeArquivo = $_FILES['imagem']['name'];
-        $caminhoArquivo = $diretorioDestino . $nomeArquivo;
+    if ($dados['nomeImg'] == "") {
+        $nomeArquivo = null;
+        if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+            $nomeArquivo = $_FILES['imagem']['name'];
+            $caminhoArquivo = $diretorioDestino . $nomeArquivo . '-' . time();
 
-        if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoArquivo)) {
-            $message = 'Arquivo enviado com sucesso';
+            if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoArquivo)) {
+                $message = 'Arquivo enviado com sucesso';
 
-        } else {
-            $message = 'Erro ao mover o arquivo';
+            } else {
+                $message = 'Erro ao mover o arquivo';
+            }
         }
     }
-    $message = 'Sem arquivo';
+    else{
+        $nomeArquivo = $dados['nomeImg'];
+    }
     $dados = json_decode($_POST['dados'], true);
 
     $p = new Produto();
+    $p->setId( $dados['id'] );
     $p->setNome($dados['nome']);
     $p->setDescr($dados['descr']);
     $p->setListavel($dados['listavel'] == "1" ? 1 : null);
@@ -98,7 +104,7 @@ if ($_REQUEST['acao'] == 'update') {
     $p->setPrecoVenda($dados['preco'] * 1.25);
     $p->setNomeImg($nomeArquivo);
     $p->setFornecedor($dados['fornecedor'] == "" ? null : $dados['fornecedor']);
-    $resposta = $p->inserir($p);
+    $resposta = $p->update($p);
     echo json_encode(['result' => $resposta, 'nome_arquivo' => $nomeArquivo, 'message' => $message]);
 }
 
@@ -122,7 +128,7 @@ if ($_REQUEST['acao'] == 'listar') {
             </tr>
         </thead>
         <tbody>";
-        foreach ($result as $value) {            
+        foreach ($result as $value) {
             $nomeImg = $value['nomeImg'];
             $cod = $value['id'];
             $list = $value['listavel'] == 1 ? "Sim" : "Não";
@@ -183,12 +189,12 @@ if ($_REQUEST['acao'] === 'listarCombo') {
     $p = new Produto();
     $result = $p->listar($p);
     if (!empty($result)) {
-        $html = "";
+        $html = "<option value='0'>Escolher...</option>";
         foreach ($result as $value) {
             $html .= "<option value='" . $value['id'] . "'>" . $value['nome'] . "</option>";
         }
-    } 
-    echo json_encode(["html"=> $html]);
+    }
+    echo json_encode(["html" => $html]);
 }
 
 

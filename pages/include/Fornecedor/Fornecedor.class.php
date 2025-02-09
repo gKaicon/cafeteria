@@ -150,7 +150,7 @@ class Fornecedor
     public function listarCombo()
     {
         try {
-            $sql = 'select id, razao_social from fornecedores where dt_delete is null;';
+            $sql = 'select id, razao_social from Fornecedores where dt_delete is null;';
             $preparado = Conexao::getPreparedStatement($sql);
             if ($preparado->execute()) {
                 return $preparado->fetchAll(PDO::FETCH_ASSOC);
@@ -164,7 +164,7 @@ class Fornecedor
     public function listar()
     {
         try {
-            $sql = 'select * from fornecedores where dt_delete is null;';
+            $sql = 'select * from Fornecedores where dt_delete is null;';
             $preparado = Conexao::getPreparedStatement($sql);
             if ($preparado->execute()) {
                 return $preparado->fetchAll(PDO::FETCH_ASSOC);
@@ -177,7 +177,7 @@ class Fornecedor
     public function getByID(Fornecedor $obj)
     {
         try {
-            $sql = 'select * from fornecedores where id = ? and dt_delete is null;';
+            $sql = 'select * from Fornecedores where id = ? and dt_delete is null;';
             $preparado = Conexao::getPreparedStatement($sql);
             $preparado->bindValue(1, $obj->getId());
             if ($preparado->execute()) {
@@ -192,7 +192,7 @@ class Fornecedor
     public function delete(Fornecedor $obj)
     {
         try {
-            $sql = 'UPDATE fornecedores SET dt_delete = NOW() where id = ?;';
+            $sql = 'UPDATE Fornecedores SET dt_delete = NOW() where id = ?;';
             $preparado = Conexao::getPreparedStatement($sql);
             $preparado->bindValue(1, $obj->getId());
             if ($preparado->execute()) {
@@ -207,7 +207,7 @@ class Fornecedor
     public function inserir(Fornecedor $obj)
     {
         try {
-            $sql = 'insert into fornecedores (razao_social, cnpj, telefone, email, logradouro, num, bairro, cidade, complemento, uf, cep, codigoMunicipio) values (?,?,?,?,?,?,?,?,?,?,?,?);';
+            $sql = 'insert into Fornecedores (razao_social, cnpj, telefone, email, logradouro, num, bairro, cidade, complemento, uf, cep, codigoMunicipio) values (?,?,?,?,?,?,?,?,?,?,?,?);';
             $preparado = Conexao::getPreparedStatement($sql);
             $preparado->bindValue(1, $obj->getRazaoSocial());
             $preparado->bindValue(2, $obj->getCnpj());
@@ -233,7 +233,7 @@ class Fornecedor
 
     public function update(Fornecedor $obj) {
         try {
-            $sql = 'UPDATE fornecedores SET razao_social = ?, telefone = ?, email = ?, logradouro = ?, num = ?, bairro = ?, cidade = ?, complemento = ?, uf = ?, cep = ?, codigoMunicipio = ? WHERE id = ?;';
+            $sql = 'UPDATE Fornecedores SET razao_social = ?, telefone = ?, email = ?, logradouro = ?, num = ?, bairro = ?, cidade = ?, complemento = ?, uf = ?, cep = ?, codigoMunicipio = ? WHERE id = ?;';
             $preparado = Conexao::getPreparedStatement($sql);
             $preparado->bindValue(1, $obj->getRazaoSocial());
             $preparado->bindValue(2, $obj->getTelefone());            

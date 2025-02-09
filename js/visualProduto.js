@@ -10,70 +10,81 @@ function verificaCheckBox() {
   return document.getElementById("list").checked == true;
 }
 
-document.getElementById("list").addEventListener("change", function () {
-  document.getElementById("listavel").value = verificaCheckBox() ? "1" : "0"
-});
-
 document.querySelector("form").addEventListener("click", (event) => {
   if (verificaCheckBox()) {
-    document
-      .querySelectorAll(".imagem")
-      .forEach((imagem) => (imagem.style.display = "block"));
+    document.getElementById("listavel").value = "1"
+    document.querySelectorAll(".imagem").forEach((imagem) => (imagem.style.display = "block"));
   } else {
-    document
-      .querySelectorAll(".imagem")
-      .forEach((imagem) => (imagem.style.display = "none"));
+    document.getElementById("listavel").value = "0"
+    document.querySelectorAll(".imagem").forEach((imagem) => (imagem.style.display = "none"));
   }
-  console.log(verificaCheckBox());
+});
+
+document.getElementById("listavel").addEventListener("change", function () {
+  document.getElementById("list").checked = this.value === "1";
 });
 
 //inserir
 document.querySelector("#enviar").addEventListener("click", (event) => {
-  event.preventDefault();
-  const formulario = document.getElementById("form-cadastro");
-  const dados = {};
-  const formData = new FormData();
+  
+  if (verificaSelectByID('fornecedor', event)) {
+    document.querySelector('.hidden-sub').click()
+    event.preventDefault();
+    const formulario = document.getElementById("form-cadastro");
+    const dados = {};
+    const formData = new FormData();
 
-  const campos = formulario.querySelectorAll("input, select");
-  campos.forEach((campo) => {
-    if (campo.type === "file") {
-      formData.append(campo.name, campo.files[0]);
-    } else {
-      dados[campo.name] = campo.value;
-    }
-  });
-
-  const dadosJSON = JSON.stringify(dados);
-  formData.append("dados", dadosJSON);
-
-  fetch("include/Produto/Controlador.php?acao=inserir", {
-    method: "POST",
-    body: formData,
-  })
-    .then((response) => {
-      if (!response.ok) {
-        return response.text().then((err) => {
-          throw new Error(
-            "Network response was not ok. Error:" +
-            response.status +
-            " - " +
-            err
-          );
-        });
+    const campos = formulario.querySelectorAll("input, select");
+    campos.forEach((campo) => {
+      if (campo.type === "file") {
+        formData.append(campo.name, campo.files[0]);
+      } else {
+        dados[campo.name] = campo.value;
       }
-      return response.json();
-    })
-    .then((data) => {
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
     });
-  carregarTabela()
+
+    const dadosJSON = JSON.stringify(dados);
+    formData.append("dados", dadosJSON);
+
+    fetch("include/Produto/Controlador.php?acao=inserir", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return response.text().then((err) => {
+            throw new Error(
+              "Network response was not ok. Error:" +
+              response.status +
+              " - " +
+              err
+            );
+          });
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    carregarTabela()
+  }
 });
 
 //listar
 function carregarTabela() {
+  document.getElementById('excluir-img').style.display = 'none'
+  document.getElementById('id').value = ""
+  document.getElementById('nomeImg').value = ""
+  document.getElementById('nome').value = ""
+  document.getElementById('descr').value = ""
+  document.getElementById('preco').value = ""
+  document.getElementById('fornecedor').value = ""
+  document.getElementById('listavel').value = ""
+  document.getElementById('list').checked = false
+
   document.getElementById('enviar').style.display = 'block'
   document.getElementById('salvar').style.display = 'none'
   fetch('include/Produto/Controlador.php?acao=listar')
@@ -90,6 +101,8 @@ function carregarTabela() {
 
 // //carregar dados para Editar
 function editar(id) {
+  document.getElementById('enviar').style.display = 'none'
+  document.getElementById('salvar').style.display = 'block'
   if (arrayEdicao[id].nomeImg != null) {
     document.getElementById('excluir-img').style.display = 'block'
   }
@@ -101,53 +114,69 @@ function editar(id) {
   document.getElementById('fornecedor').value = arrayEdicao[id].idFornecedor
   document.getElementById('listavel').value = arrayEdicao[id].listavel
 
+  if (arrayEdicao[id].listavel == 1) {
+    document.getElementById('list').checked = true
+  }
+  else {
+    document.getElementById('list').checked = false
+  }
+
   document.getElementById('enviar').style.display = 'none'
   document.getElementById('salvar').style.display = 'block'
+
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
 }
 
 //atualizar
 document.querySelector("#salvar").addEventListener('click', (event) => {
-  event.preventDefault();
-  const formulario = document.getElementById("form-cadastro");
-  const dados = {};
-  const formData = new FormData();
+  if (verificaSelectByID('fornecedor', event)) {
+    document.querySelector('.hidden-sub').click()
+    event.preventDefault();
+    const formulario = document.getElementById("form-cadastro");
+    const dados = {};
+    const formData = new FormData();
 
-  const campos = formulario.querySelectorAll("input, select");
-  campos.forEach((campo) => {
-    if (campo.type === "file") {
-      formData.append(campo.name, campo.files[0]);
-    } else {
-      dados[campo.name] = campo.value;
-    }
-  });
-
-  const dadosJSON = JSON.stringify(dados);
-  formData.append("dados", dadosJSON);
-  let id = document.getElementById('id').value
-  fetch('include/Produto/Controlador.php?acao=update&id=' + id + '', {
-    method: "POST",
-    body: formData,
-  })
-    .then((response) => {
-      if (!response.ok) {
-        return response.text().then((err) => {
-          throw new Error(
-            "Network response was not ok. Error:" +
-            response.status +
-            " - " +
-            err
-          );
-        });
+    const campos = formulario.querySelectorAll("input, select");
+    campos.forEach((campo) => {
+      if (campo.type === "file") {
+        formData.append(campo.name, campo.files[0]);
+      } else {
+        dados[campo.name] = campo.value;
       }
-      return response.json();
-    })
-    .then((data) => {
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
     });
-  carregarTabela()
+
+    const dadosJSON = JSON.stringify(dados);
+    formData.append("dados", dadosJSON);
+    let id = document.getElementById('id').value
+    fetch('include/Produto/Controlador.php?acao=update&id=' + id + '', {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return response.text().then((err) => {
+            throw new Error(
+              "Network response was not ok. Error:" +
+              response.status +
+              " - " +
+              err
+            );
+          });
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    carregarTabela()
+  }
 })
 
 
@@ -160,7 +189,7 @@ document.getElementById('excluir-img').addEventListener('click', (event) => {
 
 //deletar Imagem
 function deletarImg(id, nomeImg) {
-  
+
 
   if (window.confirm(`Tem certeza que deseja apagar a imagem: ${nomeImg}?`)) {
     fetch('include/Produto/Controlador.php?acao=excluirArquivo&arquivo=' + nomeImg + '&id=' + id + '', {

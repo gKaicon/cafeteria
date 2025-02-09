@@ -96,7 +96,7 @@ class Produto
     public function inserir(Produto $p)
     {
         try {
-            $sql = 'insert into produtos (nome, descr, precoCusto, precoVenda, listavel, nomeImg, idfornecedor) values (?,?,?,?,?,?,?);';
+            $sql = 'insert into Produtos (nome, descr, precoCusto, precoVenda, listavel, nomeImg, idFornecedor) values (?,?,?,?,?,?,?);';
             $preparado = Conexao::getPreparedStatement($sql);
             $preparado->bindValue(1, $p->getNome());
             $preparado->bindValue(2, $p->getDescr());
@@ -117,7 +117,7 @@ class Produto
     public function update(Produto $p)
     {
         try {
-            $sql = 'UPDATE produtos SET nome = ?, descr = ?, precoCusto = ?, precoVenda = ?, listavel = ?, nomeImg = ?, idfornecedor = ? WHERE id = ?;';
+            $sql = 'UPDATE Produtos SET nome = ?, descr = ?, precoCusto = ?, precoVenda = ?, listavel = ?, nomeImg = ?, idFornecedor = ? WHERE id = ?;';
             $preparado = Conexao::getPreparedStatement($sql);
             $preparado->bindValue(1, $p->getNome());
             $preparado->bindValue(2, $p->getDescr());
@@ -127,6 +127,7 @@ class Produto
             $preparado->bindValue(6, $p->getNomeImg());
             $preparado->bindValue(7, $p->getFornecedor());
             $preparado->bindValue(8, $p->getId());
+            $preparado->debugDumpParams();        
             if ($preparado->execute()) {
                 return true;
             }
@@ -139,7 +140,7 @@ class Produto
     public function deleteIMG(Produto $p)
     {
         try {
-            $sql = 'UPDATE produtos SET nomeImg = NULL WHERE id = ?;';
+            $sql = 'UPDATE Produtos SET nomeImg = NULL WHERE id = ?;';
             $preparado = Conexao::getPreparedStatement($sql);
             $preparado->bindValue(1, $p->getId());
             if ($preparado->execute()) {
@@ -154,7 +155,7 @@ class Produto
     public function listar(Produto $p)
     {
         try {
-            $sql = 'SELECT produtos.*, fornecedores.razao_social as fornecedor FROM produtos LEFT JOIN fornecedores on fornecedores.id = produtos.idfornecedor;';
+            $sql = 'SELECT Produtos.*, Fornecedores.razao_social as fornecedor FROM Produtos LEFT JOIN Fornecedores on Fornecedores.id = Produtos.idFornecedor;';
             $preparado = Conexao::getPreparedStatement($sql);
             if ($preparado->execute()) {
                 return $preparado->fetchAll(PDO::FETCH_ASSOC);
@@ -168,7 +169,7 @@ class Produto
     public function delete(Produto $p)
     {
         try {
-            $sql = 'delete from produtos where id = ?;';
+            $sql = 'delete from Produtos where id = ?;';
             $preparado = Conexao::getPreparedStatement($sql);
             $preparado->bindValue(1, $p->getId());
             if ($preparado->execute()) {
@@ -181,7 +182,7 @@ class Produto
     }
     public function listarParaPreencher()
     {
-        $sql = 'select * from produtos where listavel = \'1\';';
+        $sql = 'select * from Produtos where listavel = \'0\';';
         $preparado = Conexao::getPreparedStatement($sql);
         if ($preparado->execute())
             return $preparado->fetchAll(PDO::FETCH_ASSOC);

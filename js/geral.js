@@ -71,32 +71,43 @@ if (document.querySelector('.decimal10-2')) {
     })
 }
 
-if(document.getElementById('fornecedor')){
+if (document.getElementById('fornecedor')) {
     let comboFornecedor = document.getElementById('fornecedor')
     fetch('include/Fornecedor/Controlador.php?acao=listarCombo')
-    .then(response => response.text())
-    .then(data => {
-      let dados = JSON.parse(data)
-      comboFornecedor.innerHTML = dados.html
-    })
+        .then(response => response.text())
+        .then(data => {
+            let dados = JSON.parse(data)
+            comboFornecedor.innerHTML = dados.html
+        })
 }
 
-if(document.getElementById('produto')){
+if (document.getElementById('produto')) {
     let comboFornecedor = document.getElementById('produto')
     fetch('include/Produto/Controlador.php?acao=listarCombo')
-    .then(response => response.text())
-    .then(data => {
-      let dados = JSON.parse(data)
-      comboFornecedor.innerHTML = dados.html
-    })
+        .then(response => response.text())
+        .then(data => {
+            let dados = JSON.parse(data)
+            comboFornecedor.innerHTML = dados.html
+        })
 }
 
-if(document.getElementById('funcionario')){
+if (document.getElementById('funcionario')) {
     let comboFornecedor = document.getElementById('funcionario')
     fetch('include/Funcionario/Controlador.php?acao=listarCombo')
-    .then(response => response.text())
-    .then(data => {
-      let dados = JSON.parse(data)
-      comboFornecedor.innerHTML = dados.html
-    })
+        .then(response => response.text())
+        .then(data => {
+            let dados = JSON.parse(data)
+            comboFornecedor.innerHTML = dados.html
+        })
+}
+
+function verificaSelectByID(idSelect, event) {
+    const select = document.getElementById(idSelect);
+
+    if (select.value == '0') {
+        event.preventDefault();
+        alert('Selecione uma opção no campo ' + idSelect);
+        return false
+    }
+    return true
 }

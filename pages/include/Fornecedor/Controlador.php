@@ -92,7 +92,7 @@ if ($_REQUEST['acao'] == 'listarCombo') {
     $f = new Fornecedor();
     $result = $f->listarCombo();
     if ($result) {
-        $html = "";
+        $html = "<option value='0'>Escolher...</option>";
         foreach ($result as $value) {
             $html .= "<option value='" . $value['id'] . "'>" . $value['razao_social'] . "</option>";
         }

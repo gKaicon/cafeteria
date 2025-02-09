@@ -237,3 +237,7 @@ table {
   border: none;
   outline: none;
 }
+
+.hidden-sub{
+  display: none !important;
+}

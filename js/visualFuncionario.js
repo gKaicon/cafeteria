@@ -4,6 +4,7 @@ carregarTabela()
 
 //inserir
 document.querySelector('#enviar').addEventListener('click', (event) => {
+    document.querySelector('.hidden-sub').click()
     event.preventDefault();
     let dados = {
         nome: document.getElementById('nome').value,
@@ -79,6 +80,7 @@ function editar(id) {
 //atualizar
 document.querySelector("#salvar").addEventListener('click', (event) => {
     event.preventDefault();
+    document.querySelector('.hidden-sub').click()
     let id = document.getElementById('id').value
     let dados = {
         nome: document.getElementById('nome').value,

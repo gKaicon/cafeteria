@@ -43,12 +43,12 @@
                         <label for="dt_compra">Data da compra: </label>
                         <input required type="date" name="dt_compra" id="dt_compra">
                         <label for="fornecedor">Fornecedor:</label>
-                        <select name="fornecedor" id="fornecedor"></select>
+                        <select required name="fornecedor" id="fornecedor"></select>
                         <label for="funcionario">Funcionario:</label>
-                        <select name="funcionario" id="funcionario"></select>
+                        <select required name="funcionario" id="funcionario"></select>
                         <div id="valorFinal" style="display: none;">
                             <label for="valorFinal">Valor Final:</label>
-                            <input type="text" name="valorFinal" id="valorFinal" class="decimal10-2" maxlength="13">
+                            <input required type="text" name="valorFinal" id="valorFinal" class="decimal10-2" maxlength="13">
                         </div>
                     </div>
                     <div class="buttons">
@@ -62,8 +62,8 @@
                         <div class="buttons">
                             <button type="button" id="enviar">Enviar</button>
                         </div>
-                    </div>                  
-
+                    </div>
+                    <input type="submit" class="hidden-sub">
                 </form>
             </fieldset>
         </section>

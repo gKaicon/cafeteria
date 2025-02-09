@@ -111,7 +111,7 @@ INSERT INTO Funcionarios (nome, cargo, cpf, telefone, email)
 VALUES ('João da Silva', 'Gerente', '123.456.789-00', '(11) 99999-9999', 'joao@email.com');
 INSERT INTO Fornecedores (razao_social, cnpj)
 VALUES ('Fornecedor ABC Ltda.', '12.345.678/0001-90');
-INSERT INTO produtos (nome, descr, precoVenda, nomeImg)
+INSERT INTO Produtos (nome, descr, precoVenda, nomeImg)
 VALUES ('Java Jive', 'Um clássico robusto com um toque de doçura, perfeito para começar o dia com energia.', 12.00,
         'java.jpeg'),
        ('Python Punch', 'Uma mistura suave e elegante, ideal para quem busca um café refrescante.', 10.00,
@@ -143,15 +143,13 @@ VALUES ('Java Jive', 'Um clássico robusto com um toque de doçura, perfeito par
        ('AI Americano', 'Um café forte e estimulante, para te inspirar a criar inteligências artificiais incríveis.',
         15.00, 'IA.jpeg');
 
-update produtos
+update Produtos
 set listavel = '1'
-where produtos.precoVenda < 1000;
+where Produtos.precoVenda < 1000;
 
-update produtos
+update Produtos
 set precoCusto = precoVenda / 1.25
-where produtos.precoVenda < 15555555;
-
-select * from produtos
+where Produtos.precoVenda < 15555555;
 
 INSERT INTO Compras (idfuncionario, idfornecedor, dtCompra, valorFinal)
 VALUES (1, 1, '2024-10-27', 150.00);
@@ -170,18 +168,5 @@ VALUES (1, 1, '2025-01-16', 250.00);
 INSERT INTO Compras (idfuncionario, idfornecedor, dtCompra, valorFinal)
 VALUES (1, 1, '2025-01-31', 150.00);
 
-use trabalho;
-select * from produtos;
 
-select * from fornecedores;
-select *
-from itenscompra;
-select * from compras;
-
-
-select * from itenscompra
-
-SELECT Compras.*, F.razao_social as fornecedor, F2.nome as funcionario
-            FROM Compras
-            LEFT JOIN Fornecedores F on Compras.idfornecedor = F.id
-            LEFT JOIN Funcionarios F2 on F2.registro = Compras.idfuncionario;
+select * from produtos

@@ -75,7 +75,7 @@ class Funcionario
     public function inserir(Funcionario $obj)
     {
         try {
-            $sql = 'INSERT INTO funcionarios (nome, cargo, cpf, telefone, email) VALUES (?, ?, ?, ?, ?);';
+            $sql = 'INSERT INTO Funcionarios (nome, cargo, cpf, telefone, email) VALUES (?, ?, ?, ?, ?);';
             $preparado = Conexao::getPreparedStatement($sql);
             $preparado->bindValue(1, $obj->getNome());
             $preparado->bindValue(2, $obj->getCargo());
@@ -94,7 +94,7 @@ class Funcionario
     public function update(Funcionario $obj)
     {
         try {
-            $sql = 'UPDATE funcionarios SET nome = ?, cargo = ?, cpf = ?, telefone = ?, email = ? WHERE registro = ?;';
+            $sql = 'UPDATE Funcionarios SET nome = ?, cargo = ?, cpf = ?, telefone = ?, email = ? WHERE registro = ?;';
             $preparado = Conexao::getPreparedStatement($sql);
             $preparado->bindValue(1, $obj->getNome());
             $preparado->bindValue(2, $obj->getCargo());
@@ -114,7 +114,7 @@ class Funcionario
     public function getByID(Funcionario $obj)
     {
         try {
-            $sql = 'select * from funcionarios where registro = ?;';
+            $sql = 'select * from Funcionarios where registro = ?;';
             $preparado = Conexao::getPreparedStatement($sql);
             $preparado->bindValue(1, $obj->getRegistro());
             if ($preparado->execute()) {
@@ -129,7 +129,7 @@ class Funcionario
     public function delete(Funcionario $obj)
     {
         try {
-            $sql = 'delete from funcionarios where registro = ?;';
+            $sql = 'delete from Funcionarios where registro = ?;';
             $preparado = Conexao::getPreparedStatement($sql);
             $preparado->bindValue(1, $obj->getRegistro());
             if ($preparado->execute()) {
@@ -144,7 +144,7 @@ class Funcionario
     public function listarCombo()
     {
         try {
-            $sql = 'select registro, nome from funcionarios;';
+            $sql = 'select registro, nome from Funcionarios;';
             $preparado = Conexao::getPreparedStatement($sql);
             if ($preparado->execute()) {
                 return $preparado->fetchAll(PDO::FETCH_ASSOC);
@@ -158,7 +158,7 @@ class Funcionario
     public function listar()
     {
         try {
-            $sql = 'select * from funcionarios;';
+            $sql = 'select * from Funcionarios;';
             $preparado = Conexao::getPreparedStatement($sql);
             if ($preparado->execute()) {
                 return $preparado->fetchAll(PDO::FETCH_ASSOC);

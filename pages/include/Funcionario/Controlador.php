@@ -91,7 +91,7 @@ if ($_REQUEST['acao'] === 'listarCombo') {
     $fu = new Funcionario();
     $result = $fu->listarCombo();
     if ($result) {
-        $html = "";
+        $html = "<option value='0'>Escolher...</option>";
         foreach ($result as $value) {
             $html .= "<option value='" . $value['registro'] . "'>" . $value['nome'] . "</option>";
         }

@@ -6,6 +6,7 @@ let acao = ''
 
 //inserir
 document.querySelector('#enviar').addEventListener('click', (event) => {
+    document.querySelector('.hidden-sub').click()
     event.preventDefault();
     let dados = {
         cep: document.querySelector('#cep').value,
@@ -90,6 +91,7 @@ function editar(id) {
 
 //atualizar
 document.querySelector("#salvar").addEventListener('click', (event) => {
+    document.querySelector('.hidden-sub').click()
     event.preventDefault();
     let id = document.getElementById('id').value
     let dados = {
