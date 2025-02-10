@@ -1,5 +1,4 @@
 <?php
-require_once('UserLogin/Controlador.php');
 session_start();
 $response;
 $response["logado"] = ($_SESSION['logado'] ? "true" : "false");
