@@ -1,7 +1,5 @@
 <?php
 session_start();
-$response;
-$response["logado"] = ($_SESSION['logado'] ? "true" : "false");
-
+$response = ($_SESSION['logado'] == true ? true : false);
 echo json_encode($response);
 ?>

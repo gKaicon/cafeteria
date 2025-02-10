@@ -27,18 +27,15 @@ if ($_REQUEST['acao'] === "login") {
         header("Location: ../../index.html");
     } else {
         http_response_code(404);
-        header("Location: not-found.html");
     }
 }
 
 
 if ($_REQUEST['acao'] === "logout") {
-    $controladorUser = new UserLogin();
     session_start();
     $_SESSION['logado'] = false;
     $_SESSION['username'] = "";
     $_SESSION['tipo'] = "";
-    $response["tipoUser"] = "";
     session_destroy();
     http_response_code(200);
     header("Location: ../../index.html");
