@@ -38,6 +38,7 @@ if ($_REQUEST['acao'] === "logout") {
     $_SESSION['logado'] = false;
     $_SESSION['username'] = "";
     $_SESSION['tipo'] = "";
+    $response["tipoUser"] = "";
     session_destroy();
     http_response_code(200);
     header("Location: ../../index.html");
