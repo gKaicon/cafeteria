@@ -1,23 +1,23 @@
 const precisaLogin = document.currentScript.dataset.precisalogin
+let logado;
 
 function checkLogin() {
     fetch('include/UserLogin/Controlador.php?acao=check')
         .then(res => res.json())
         .then(data => {
-            
-            if (precisaLogin == "true" && data == "false") {
+            if (precisaLogin == "true" && data == false) {
                 window.location.href = "tela-login.html";
             }
-            if (data == "true") {
-                document.querySelector('#btn-login').style.display = 'none'
-                document.querySelector('#btn-adm').style.display = 'inline-block'
-                document.querySelector('#btn-logout').style.display = 'inline-block'
-            }
-            if (data == "false") {
-                document.querySelector('#btn-login').style.display = 'inline-block'
-                document.querySelector('#btn-adm').style.display = 'none'
-                document.querySelector('#btn-logout').style.display = 'none'
-            }
+            logado = data
+
+        }).then(() => {
+            const login = document.querySelector('#btn-login')
+            const adm = document.querySelector('#btn-adm')
+            const logout = document.querySelector('#btn-logout')
+
+            login.style.display = login && logado ? 'none' : 'inline-block'
+            adm.style.display = adm && logado ? 'inline-block' : 'none'
+            logout.style.display = logout && logado ? 'inline-block' : 'none'
         })
 }
 
