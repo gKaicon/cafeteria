@@ -4,6 +4,8 @@ function checkLogin() {
     fetch('include/check.php')
         .then(res => res.json())
         .then(data => {
+            console.log(data);
+            
             if (precisaLogin == "true" && data.logado == "false") {
                 window.location.href = "tela-login.html";
             }
@@ -26,6 +28,7 @@ function logout() {
     fetch('include/UserLogin/Controlador.php?acao=logout')
         .then(res => res.json())
         .then(data => {
+            console.log(data);
             window.location.href = "../index.html";
         })
 }
