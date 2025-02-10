@@ -140,7 +140,7 @@ class Produto
     public function deleteIMG(Produto $p)
     {
         try {
-            $sql = 'UPDATE Produtos SET nomeImg = NULL WHERE id = ?;';
+            $sql = 'UPDATE Produtos SET nomeImg = NULL, listavel = NULL WHERE id = ?;';
             $preparado = Conexao::getPreparedStatement($sql);
             $preparado->bindValue(1, $p->getId());
             if ($preparado->execute()) {
@@ -156,6 +156,20 @@ class Produto
     {
         try {
             $sql = 'SELECT Produtos.*, Fornecedores.razao_social as fornecedor FROM Produtos LEFT JOIN Fornecedores on Fornecedores.id = Produtos.idFornecedor;';
+            $preparado = Conexao::getPreparedStatement($sql);
+            if ($preparado->execute()) {
+                return $preparado->fetchAll(PDO::FETCH_ASSOC);
+            }
+            return null;
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+
+    public function listarCombo(Produto $p)
+    {
+        try {
+            $sql = 'SELECT Produtos.*, Fornecedores.razao_social as fornecedor FROM Produtos LEFT JOIN Fornecedores on Fornecedores.id = Produtos.idFornecedor WHERE Produtos.listavel = \'0\';';
             $preparado = Conexao::getPreparedStatement($sql);
             if ($preparado->execute()) {
                 return $preparado->fetchAll(PDO::FETCH_ASSOC);
@@ -182,10 +196,25 @@ class Produto
     }
     public function listarParaPreencher()
     {
-        $sql = 'select * from Produtos where listavel = \'0\';';
+        $sql = 'select * from Produtos where listavel = \'1\';';
         $preparado = Conexao::getPreparedStatement($sql);
         if ($preparado->execute())
             return $preparado->fetchAll(PDO::FETCH_ASSOC);
         return null;
+    }
+
+    public function updateCampo($campo, $valor, $id){
+        try {
+            $sql = 'UPDATE Produtos SET '.$campo.' = ? WHERE id = ?;';
+            $preparado = Conexao::getPreparedStatement($sql);
+            $preparado->bindValue(1, $valor);
+            $preparado->bindValue(2, $id);
+            if ($preparado->execute()) {
+                return true;
+            }
+            return false;
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
     }
 }

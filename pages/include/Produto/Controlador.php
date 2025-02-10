@@ -4,7 +4,6 @@ require_once('Produto.class.php');
 if ($_REQUEST['acao'] === 'preencheTabela') {
     $controladorProduto = new Produto();
     $result = $controladorProduto->listarParaPreencher();
-    $result[''];
     $html = '';
     if (!empty($result)) {
         $cont = 0;
@@ -12,7 +11,6 @@ if ($_REQUEST['acao'] === 'preencheTabela') {
             if ($cont % 4 == 0) {
                 $html .= "<tr class='row'>";
             }
-
             $cont++;
             $caminho = $value['nomeImg'];
             $nome = $value['nome'];
@@ -24,7 +22,7 @@ if ($_REQUEST['acao'] === 'preencheTabela') {
                             <div class='content-card col-12'>
                                 <img class='img-card' src='../midia/cardapio/$caminho' alt='$nome'>
                                 <h3>$nome</h3>
-                            <p>$descr</p>
+                                <p>$descr</p>
                             </div>
                             <div class='button-card col-12'><button>R$ $preco</button></div>
                         </div>
@@ -40,12 +38,11 @@ if ($_REQUEST['acao'] === 'preencheTabela') {
 
 
 if ($_REQUEST['acao'] === 'inserir') {
-
     $diretorioDestino = '../../../midia/cardapio/';
 
     $nomeArquivo = null;
     if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-        $nomeArquivo = $_FILES['imagem']['name'] . '-' . time();
+        $nomeArquivo = time() . '-' . $_FILES['imagem']['name'];
         $caminhoArquivo = $diretorioDestino . $nomeArquivo;
 
         if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoArquivo)) {
@@ -57,6 +54,7 @@ if ($_REQUEST['acao'] === 'inserir') {
     }
     $message = 'Sem arquivo';
     $dados = json_decode($_POST['dados'], true);
+
     $p = new Produto();
     $p->setNome($dados['nome']);
     $p->setDescr($dados['descr']);
@@ -79,8 +77,8 @@ if ($_REQUEST['acao'] == 'update') {
     if ($dados['nomeImg'] == "") {
         $nomeArquivo = null;
         if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-            $nomeArquivo = $_FILES['imagem']['name'];
-            $caminhoArquivo = $diretorioDestino . $nomeArquivo . '-' . time();
+            $nomeArquivo = time() . '-' . $_FILES['imagem']['name'];
+            $caminhoArquivo = $diretorioDestino . $nomeArquivo;
 
             if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoArquivo)) {
                 $message = 'Arquivo enviado com sucesso';
@@ -89,14 +87,13 @@ if ($_REQUEST['acao'] == 'update') {
                 $message = 'Erro ao mover o arquivo';
             }
         }
-    }
-    else{
+    } else {
         $nomeArquivo = $dados['nomeImg'];
     }
     $dados = json_decode($_POST['dados'], true);
 
     $p = new Produto();
-    $p->setId( $dados['id'] );
+    $p->setId($dados['id']);
     $p->setNome($dados['nome']);
     $p->setDescr($dados['descr']);
     $p->setListavel($dados['listavel'] == "1" ? 1 : null);
@@ -187,7 +184,7 @@ if ($_REQUEST['acao'] === 'delete') {
 
 if ($_REQUEST['acao'] === 'listarCombo') {
     $p = new Produto();
-    $result = $p->listar($p);
+    $result = $p->listarCombo($p);
     if (!empty($result)) {
         $html = "<option value='0'>Escolher...</option>";
         foreach ($result as $value) {

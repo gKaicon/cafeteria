@@ -43,10 +43,6 @@ if ($_REQUEST['acao'] === "logout") {
     header("Location: ../../index.html");
 }
 
-
-
-
 //kaicon K@!c0n21
 //admin admin
 //rosinei ifmg123
-

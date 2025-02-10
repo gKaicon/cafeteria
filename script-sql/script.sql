@@ -169,4 +169,4 @@ INSERT INTO Compras (idfuncionario, idfornecedor, dtCompra, valorFinal)
 VALUES (1, 1, '2025-01-31', 150.00);
 
 
-select * from produtos
+select * from produtos order by id desc

@@ -1,6 +1,7 @@
 let arrayEdicao;
 
 document.getElementById("salvar").style.display = "none";
+document.getElementById('nomeImg').style.display = 'none'
 document.querySelectorAll(".imagem").forEach((imagem) => (imagem.style.display = "none"));
 
 carregarTabela()
@@ -122,6 +123,7 @@ function editar(id) {
   }
 
   document.getElementById('enviar').style.display = 'none'
+  document.getElementById('nomeImg').style.display = 'block'
   document.getElementById('salvar').style.display = 'block'
 
   window.scrollTo({
@@ -133,9 +135,9 @@ function editar(id) {
 
 //atualizar
 document.querySelector("#salvar").addEventListener('click', (event) => {
+  event.preventDefault();
   if (verificaSelectByID('fornecedor', event)) {
     document.querySelector('.hidden-sub').click()
-    event.preventDefault();
     const formulario = document.getElementById("form-cadastro");
     const dados = {};
     const formData = new FormData();
@@ -176,6 +178,10 @@ document.querySelector("#salvar").addEventListener('click', (event) => {
         console.error("Error:", error);
       });
     carregarTabela()
+    window.scrollTo({
+      bottom: 0,
+      behavior: 'smooth'
+    });
   }
 })
 
@@ -189,8 +195,7 @@ document.getElementById('excluir-img').addEventListener('click', (event) => {
 
 //deletar Imagem
 function deletarImg(id, nomeImg) {
-
-
+  event.preventDefault();
   if (window.confirm(`Tem certeza que deseja apagar a imagem: ${nomeImg}?`)) {
     fetch('include/Produto/Controlador.php?acao=excluirArquivo&arquivo=' + nomeImg + '&id=' + id + '', {
     }).then(response => {
@@ -208,6 +213,7 @@ function deletarImg(id, nomeImg) {
 
 //deletar
 function deletar(id, nomeImg) {
+  event.preventDefault();
   if (window.confirm("Tem certeza que deseja apagar?")) {
     fetch('include/Produto/Controlador.php?acao=delete&id=' + id + '&arquivo=' + nomeImg + '', {
     }).then(response => {

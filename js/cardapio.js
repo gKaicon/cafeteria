@@ -15,7 +15,7 @@ window.addEventListener('scroll', function () {
     }
 })
 
-function preencheTabela(params) {
+function preencheTabela() {
     fetch('include/Produto/Controlador.php?acao=preencheTabela')
         .then(response => response.text())
         .then(data => {
