@@ -168,7 +168,8 @@ class Produto
     public function listarCombo(Produto $p)
     {
         try {
-            $sql = 'SELECT Produtos.*, Fornecedores.razao_social as fornecedor FROM Produtos LEFT JOIN Fornecedores on Fornecedores.id = Produtos.idFornecedor WHERE Produtos.listavel = \'0\';';
+            $sql = 'SELECT Produtos.*, Fornecedores.razao_social as fornecedor FROM Produtos 
+            LEFT JOIN Fornecedores on Fornecedores.id = Produtos.idFornecedor WHERE Produtos.listavel = \'0\' or Produtos.listavel is NULL;';
             $preparado = Conexao::getPreparedStatement($sql);
             if ($preparado->execute()) {
                 return $preparado->fetchAll(PDO::FETCH_ASSOC);
