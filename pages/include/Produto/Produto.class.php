@@ -126,8 +126,7 @@ class Produto
             $preparado->bindValue(5, $p->getListavel());
             $preparado->bindValue(6, $p->getNomeImg());
             $preparado->bindValue(7, $p->getFornecedor());
-            $preparado->bindValue(8, $p->getId());
-            $preparado->debugDumpParams();        
+            $preparado->bindValue(8, $p->getId()); 
             if ($preparado->execute()) {
                 return true;
             }
