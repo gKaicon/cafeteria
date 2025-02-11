@@ -102,11 +102,15 @@ if ($_REQUEST['acao'] == 'update') {
     $p->setNomeImg($nomeArquivo);
     $p->setFornecedor($dados['fornecedor'] == "" ? null : $dados['fornecedor']);
     $resposta = $p->update($p);
-    if ($resposta == true)
+    if ($resposta == true){
+        echo json_encode(['result' => $resposta, 'nome_arquivo' => $nomeArquivo, 'message' => $message]);
         http_response_code(200);
-    else
+    }
+    else{
+        echo json_encode(['result' => 'Algo deu errado']);
         http_response_code(500);
-    echo json_encode(['result' => $resposta, 'nome_arquivo' => $nomeArquivo, 'message' => $message]);
+    }
+    
 }
 
 if ($_REQUEST['acao'] == 'listar') {
