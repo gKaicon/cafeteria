@@ -154,7 +154,12 @@ document.querySelector("#salvar").addEventListener('click', (event) => {
     fetch('include/Produto/Controlador.php?acao=update&id=' + id + '', {
       method: "POST",
       body: formData,
-    }).then(response => response.text())
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.text();
+    })
       .then((data) => {
         console.log("Success:", data);
         carregarTabela()
