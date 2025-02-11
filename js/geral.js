@@ -105,7 +105,6 @@ function verificaSelectByID(idSelect, event) {
     const select = document.getElementById(idSelect);
 
     if (select.value == '0') {
-        event.preventDefault();
         alert('Selecione uma opção no campo ' + idSelect);
         return false
     }

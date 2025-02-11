@@ -27,10 +27,9 @@ document.getElementById("listavel").addEventListener("change", function () {
 
 //inserir
 document.querySelector("#enviar").addEventListener("click", (event) => {
-
+  event.preventDefault();
   if (verificaSelectByID('fornecedor', event)) {
     document.querySelector('.hidden-sub').click()
-    event.preventDefault();
     const formulario = document.getElementById("form-cadastro");
     const dados = {};
     const formData = new FormData();
@@ -149,7 +148,6 @@ document.querySelector("#salvar").addEventListener('click', (event) => {
     const dadosJSON = JSON.stringify(dados);
     formData.append("dados", dadosJSON);
     console.log(formData);
-    return;
     let id = document.getElementById('id').value
     fetch('include/Produto/Controlador.php?acao=update&id=' + id + '', {
       method: "POST",
