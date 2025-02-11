@@ -153,10 +153,7 @@ document.querySelector("#salvar").addEventListener('click', (event) => {
     fetch('include/Produto/Controlador.php?acao=update&id=' + id + '', {
       method: "POST",
       body: formData,
-    })
-      .then((response) => {
-        return response.text();
-      })
+    }).then(response => response.text())
       .then((data) => {
         console.log("Success:", data);
       })
