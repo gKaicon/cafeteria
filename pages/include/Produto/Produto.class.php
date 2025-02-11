@@ -154,7 +154,8 @@ class Produto
     public function listar(Produto $p)
     {
         try {
-            $sql = 'SELECT Produtos.*, Fornecedores.razao_social as fornecedor FROM Produtos LEFT JOIN Fornecedores on Fornecedores.id = Produtos.idFornecedor;';
+            $sql = 'SELECT Produtos.*, Fornecedores.razao_social as fornecedor FROM Produtos 
+            LEFT JOIN Fornecedores on Fornecedores.id = Produtos.idFornecedor;';
             $preparado = Conexao::getPreparedStatement($sql);
             if ($preparado->execute()) {
                 return $preparado->fetchAll(PDO::FETCH_ASSOC);
