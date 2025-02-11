@@ -102,7 +102,10 @@ if ($_REQUEST['acao'] == 'update') {
     $p->setNomeImg($nomeArquivo);
     $p->setFornecedor($dados['fornecedor'] == "" ? null : $dados['fornecedor']);
     $resposta = $p->update($p);
-    $resposta = $resposta == true ? http_response_code(200) : http_response_code(500);
+    if ($resposta == true)
+        http_response_code(200);
+    else
+        http_response_code(500);
     echo json_encode(['result' => $resposta, 'nome_arquivo' => $nomeArquivo, 'message' => $message]);
 }
 
