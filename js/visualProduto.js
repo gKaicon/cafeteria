@@ -156,15 +156,15 @@ document.querySelector("#salvar").addEventListener('click', (event) => {
     }).then(response => response.text())
       .then((data) => {
         console.log("Success:", data);
+        carregarTabela()
+        window.scrollTo({
+          bottom: 0,
+          behavior: 'smooth'
+        });
       })
       .catch((error) => {
         console.error("Error:", error);
       });
-    carregarTabela()
-    window.scrollTo({
-      bottom: 0,
-      behavior: 'smooth'
-    });
   }
 })
 
