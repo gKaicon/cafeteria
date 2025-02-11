@@ -27,7 +27,7 @@ document.getElementById("listavel").addEventListener("change", function () {
 
 //inserir
 document.querySelector("#enviar").addEventListener("click", (event) => {
-  
+
   if (verificaSelectByID('fornecedor', event)) {
     document.querySelector('.hidden-sub').click()
     event.preventDefault();
@@ -115,12 +115,7 @@ function editar(id) {
   document.getElementById('fornecedor').value = arrayEdicao[id].idFornecedor
   document.getElementById('listavel').value = arrayEdicao[id].listavel
 
-  if (arrayEdicao[id].listavel == 1) {
-    document.getElementById('list').checked = true
-  }
-  else {
-    document.getElementById('list').checked = false
-  }
+  document.getElementById('list').checked = arrayEdicao[id].listavel == 1 ? true : false
 
   document.getElementById('enviar').style.display = 'none'
   document.getElementById('nomeImg').style.display = 'block'
