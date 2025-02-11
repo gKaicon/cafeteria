@@ -81,7 +81,7 @@ class ItensCompra
                 $produto = $preparado->fetch(PDO::FETCH_ASSOC);
                 $itensCompra->setValorUnitario($produto['precoCusto']);
                 $itensCompra->setValorTotal($produto['precoCusto'] * $itensCompra->getQtd());
-                $sql = "INSERT INTO Itenscompra (idCompra, idProduto, qtd, valorUnitario, valorTotal) VALUES (?, ?, ?, ?, ?);";
+                $sql = "INSERT INTO ItensCompra (idCompra, idProduto, qtd, valorUnitario, valorTotal) VALUES (?, ?, ?, ?, ?);";
                 $preparado = Conexao::getPreparedStatement($sql);
                 $preparado->bindValue(1, $itensCompra->getIdCompra());
                 $preparado->bindValue(2, $itensCompra->getIdProduto());
@@ -89,7 +89,7 @@ class ItensCompra
                 $preparado->bindValue(4, $itensCompra->getValorUnitario());
                 $preparado->bindValue(5, $itensCompra->getValorTotal());
                 if ($preparado->execute()) {
-                    $select = "SELECT sum(valorTotal) as valorFinal FROM Itenscompra WHERE idCompra = ?;";
+                    $select = "SELECT sum(valorTotal) as valorFinal FROM ItensCompra WHERE idCompra = ?;";
                     $preparado = Conexao::getPreparedStatement($select);
                     $preparado->bindValue(1, $itensCompra->getIdCompra());
                     if ($preparado->execute()) {
