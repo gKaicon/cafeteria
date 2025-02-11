@@ -149,6 +149,7 @@ document.querySelector("#salvar").addEventListener('click', (event) => {
     const dadosJSON = JSON.stringify(dados);
     formData.append("dados", dadosJSON);
     console.log(formData);
+    return;
     let id = document.getElementById('id').value
     fetch('include/Produto/Controlador.php?acao=update&id=' + id + '', {
       method: "POST",
