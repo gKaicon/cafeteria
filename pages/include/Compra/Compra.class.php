@@ -125,7 +125,7 @@ class Compra
         try {
             $sql = "SELECT * FROM Compras 
             LEFT JOIN ItensCompra on Compras.idCompra = ItensCompra.idCompra 
-            LEFT JOIN Produtos on ItensCompra.idProduto = produtos.id 
+            LEFT JOIN Produtos on ItensCompra.idProduto = Produtos.id 
             WHERE Compras.idCompra = ?;";
             $preparado = Conexao::getPreparedStatement($sql);
             $preparado->bindValue(1, $idcompra);
