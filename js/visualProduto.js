@@ -154,17 +154,7 @@ document.querySelector("#salvar").addEventListener('click', (event) => {
       body: formData,
     })
       .then((response) => {
-        if (!response.ok) {
-          return response.text().then((err) => {
-            throw new Error(
-              "Network response was not ok. Error:" +
-              response.status +
-              " - " +
-              err
-            );
-          });
-        }
-        return response.json();
+        return response.text();
       })
       .then((data) => {
         console.log("Success:", data);
