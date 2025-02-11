@@ -70,8 +70,6 @@ if ($_REQUEST['acao'] === 'inserir') {
 
 
 if ($_REQUEST['acao'] == 'update') {
-    var_dump($_REQUEST);
-    $dados = json_decode($_POST['dados'], true);
 
     $diretorioDestino = '../../../midia/cardapio/';
 
