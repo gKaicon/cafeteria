@@ -1,6 +1,15 @@
 # Projeto de uma Cafeteria, com público alvo em programadores
 
 Projeto experimental, ainda em desenvolvimento, com foco na parte de gerenciamento de compras, onde há a possibilidade de obsevar os gastos, é mais para uma empresa que tá iniciando ainda, e quer ver onde estão seus gatso e fazer ajustes nos preços, salários, cortar ou não gastos. A ideia futura, é implementar uma parte do sistema para realizar vendas no caixa, e mais futuramente ainda, realizar vendas por aplicativo web.
+
+Informações técnicas:
+
+* PHP
+* MySQL8
+* HTML5
+* CSS3
+* JS
+
 Funcionalidades atuais 09/02/2025:
 
 * Relatorio de gastos e compra do ultimo mês
